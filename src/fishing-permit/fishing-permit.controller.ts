@@ -13,9 +13,9 @@ export class FishingPermitController {
     }
   }
 
-  async getAll(_req: Request, res: Response) {
+  async getAll(req: Request, res: Response) {
     try {
-      const fishingPermits = await fishingPermitService.findAll();
+      const fishingPermits = await fishingPermitService.findAll(req);
       res.status(200).json(fishingPermits);
     } catch (error) {
       console.error(error);

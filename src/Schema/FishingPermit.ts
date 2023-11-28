@@ -7,6 +7,7 @@ export interface IFishingPermit extends Document {
   startsAt: Date;
   endsAt: Date;
   createdAt: Date;
+  userId: string
 }
 
 const FishingPermitSchema = new Schema<IFishingPermit>({
@@ -15,6 +16,7 @@ const FishingPermitSchema = new Schema<IFishingPermit>({
   email: { type: String, required: true },
   startsAt: { type: Date, required: true },
   endsAt: { type: Date, required: true },
+  userId: { type: String, required: false, default: null },
   createdAt: { type: Date, default: () => Date.now() },
 });
 
