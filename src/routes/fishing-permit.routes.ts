@@ -7,6 +7,7 @@ router.get('/get-all', fishingPermitController.getAll)
 router.get('/get-by-id', fishingPermitController.getById)
 router.get('/get-my-permits', fishingPermitController.findMyPermits)
 router.post('/create', fishingPermitController.createPermit)
+router.post('/add-catch-to-permit', fishingPermitController.addCatchToFishingPermit)
 
 
 export = router

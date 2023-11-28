@@ -25,7 +25,7 @@ export class FishingPermitController {
 
   async getById(req: Request, res: Response) {
     try {
-      const id = req?.query?.id?.toString() || ''
+      const id = req?.query?.id?.toString() || "";
       const fishingPermit = await fishingPermitService.findById(id);
       res.status(200).json(fishingPermit);
     } catch (error) {
@@ -41,6 +41,22 @@ export class FishingPermitController {
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: "Failed to retrieve fishing permits" });
+    }
+  }
+
+  async addCatchToFishingPermit(req: Request, res: Response) {
+    try {
+      const { success, error } =
+        await fishingPermitService.addCatchToFishingPermit(req);
+
+      if (error) {
+        res.status(400).json(error);
+      } else {
+        res.status(200).json(success);
+      }
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Failed to update fishing permit" });
     }
   }
 }
