@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-interface IFishingPermit extends Document {
+export interface IFishingPermit extends Document {
   firstName: string;
   lastName: string;
   email: string;
