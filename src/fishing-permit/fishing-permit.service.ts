@@ -30,6 +30,15 @@ class FishingPermitService {
   async findById(id: string): Promise<IFishingPermit | null> {
     return await FishingPermit.findById(id);
   }
+
+  async findMyPermits(req: Request): Promise<IFishingPermit[]> {
+    const user = await userService.getUserByToken(req)
+    const userId = user?._id || null
+    if(!userId) return []
+
+    const permits = await FishingPermit.find({ userId })
+    return permits
+  }
 }
 
 export default new FishingPermitService();
