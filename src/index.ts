@@ -31,8 +31,8 @@ app.use(bodyParser.json());
 app.use('/user', userRouter)
 app.use('/fishing-permit', fishingPermitRouter)
 
-
-const mongoUrl = `mongodb://localhost:27017`; // dev
+const mongoUrl = "mongodb://admin:password@localhost:27018/?authMechanism=DEFAULT"
+// const mongoUrl = `mongodb://localhost:27017`; // dev
 mongoose.connect(mongoUrl, { dbName: "fishing-permit-db" });
 
 // API routes
