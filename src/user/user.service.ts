@@ -23,7 +23,12 @@ export class UserService {
     role?: UserRoles
   }): Promise<{ error: string; success: string }> {
     if (!email || !password || !firstName || !lastName) {
-      return { error: "error", success: "" };
+      return { error: "error creating user", success: "" };
+    }
+
+    const existingUser = await User.findOne({ email })
+    if(existingUser) {
+      return { error: "email in use", success: "" };
     }
 
     const userItem = new User({
